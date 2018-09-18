@@ -36,7 +36,7 @@ export default class Metadata {
     }
 
     /**
-     * Retrieve the current price for submission as BN
+     * Retrieve the current price for submitting data to The Registry
      * @param {string} unit - Unit to convert the price to (defaults to 'ether')
      * @returns {number} Current price
      */
@@ -51,23 +51,10 @@ export default class Metadata {
             });
     }
 
-    /** @description Retrieve the current price for submission in Eth
-     * @return {number} Current price in Eth
-     */
-    async getPriceEth() {
-        return this.contract
-            .getPrice()
-            .then(r => {
-                return Eth.fromWei(r[0], "ether");
-            })
-            .catch(e => {
-                console.error(e);
-            });
-    }
-
     /** @description Retrieve metadata for this address
      * @param {string} _address
-     * @return {metadata} Metadata object with received metadata or null when no metadata available
+     * @returns {string} Address Metadata object with received metadata or null when no metadata available
+     * @returns {string} Name Metadata object with received metadata or null when no metadata available
      */
     async get(_address) {
         // Query contract for available metadata
@@ -98,10 +85,10 @@ export default class Metadata {
     }
 
     /** @description Stores address metadata on The Registry
-     * @param {string} Address for which you are submitting data
-     * @param {string} Name of the address
-     * @param {string} Metadata object
-     * @param {function} Callback for when the transaction receipt is returned
+     * @param {string} _address - Address for which you are submitting data
+     * @param {string} _name - Name of the address
+     * @param {string} _data - Metadata object
+     * @param {function} _callback - Callback for when the transaction receipt is returned
      * @return {string} TX Hash of the submitted file
      */
     async storeMetadata(_address, _name, _data, _onReceipt) {
