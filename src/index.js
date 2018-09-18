@@ -19,23 +19,22 @@ export default class Metadata {
         this.provider = provider;
         this.eth = new Eth(provider);
         this.contract = this.eth.contract(abi).at(contractAddress);
-        this.index = 0;
-        this.contract
-            .getPrice()
-            .then(r => {
-                this.index = r[0];
-            })
-            .catch(e => {
-                console.error(
-                    "Could not find contract, make sure you are connected to the right network",
-                    e,
-                );
-            });
+        console.log(this.contract.getPrice());
     }
 
     async isCurator() {}
 
-    async getPrice() {}
+    async getPrice() {
+        return this.contract
+            .getPrice()
+            .then(r => {
+                console.log(r);
+                return r;
+            })
+            .catch(e => {
+                console.error(e);
+            });
+    }
 
     /** @description Initialize The Registry module
      * @param {string} _address
