@@ -2,26 +2,13 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/ethtective/cafe.svg)](https://greenkeeper.io/) [![Build Status](https://travis-ci.com/Cygnusfear/theregistry.npm.svg?token=J95RxJssBScLdG1sc76e&branch=master)](https://travis-ci.com/ethtective/cafe) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![Ethereum Dapp Badge](https://img.shields.io/badge/web3-app-00ffd9.svg?longcache=true&logo=Ethereum&logoColor=white&style=flat&logoWidth=12)](http://www.ethereum.org)
 
-# Metadata Registry
+A Node.js module to easily retrieve address metadata from The Registry's Ethereum contract.
 
+# Setup
 
-# Development
+Usage:
 
--   `npm run clean` - Remove `lib/` directory
--   `npm test` - Run tests with linting and coverage results.
--   `npm test:only` - Run tests without linting or coverage.
--   `npm test:watch` - You can even re-run tests on file changes!
--   `npm test:prod` - Run tests with minified code.
--   `npm run test:examples` - Test written examples on pure JS for better understanding module usage.
--   `npm run lint` - Run ESlint with airbnb-config
--   `npm run cover` - Get coverage report for your code.
--   `npm run build` - Babel will transpile ES6 => ES5 and minify the code.
--   `npm run prepublish` - Hook for npm. Do all the checks before publishing your module.
-
-# Installation
-
-Just clone this repo and remove `.git` folder.
-
+`yarn add theregistry`
 
 # API
 
@@ -139,6 +126,18 @@ Retrieve the current price for submitting data to The Registry
 | unit | <code>string</code> | <code>&quot;ether&quot;</code> | Unit to convert the price to (defaults to 'ether') |
 
 
+# Development
+
+-   `npm run clean` - Remove `lib/` directory
+-   `npm test` - Run tests with linting and coverage results.
+-   `npm test:only` - Run tests without linting or coverage.
+-   `npm test:watch` - You can even re-run tests on file changes!
+-   `npm test:prod` - Run tests with minified code.
+-   `npm run test:examples` - Test written examples on pure JS for better understanding module usage.
+-   `npm run lint` - Run ESlint with airbnb-config
+-   `npm run cover` - Get coverage report for your code.
+-   `npm run build` - Babel will transpile ES6 => ES5 and minify the code.
+-   `npm run prepublish` - Hook for npm. Do all the checks before publishing your module.
 
 # License
 
