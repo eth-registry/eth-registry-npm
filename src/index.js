@@ -39,6 +39,24 @@ export default class Metadata {
      * @param {string} _address
      * @returns {string} Address Metadata object with received metadata or null when no metadata available
      * @returns {string} Name Metadata object with received metadata or null when no metadata available
+     * @example
+     * ```js
+     * import Registry from "theregistry";
+     * import Eth from "ethjs";
+     *
+     * const provider = new Eth.HttpProvider(
+     *   `https://mainnet.infura.io/`,
+     * );
+     *
+     * const registry = new Registry(provider);
+     * registry
+     *   .get(ensaddress)
+     *   .then(r => {
+     *       console.log(r.data);
+     *   })
+     *   .catch(e => console.error(e));
+     *
+     * ```
      */
     async get(_address) {
         // Query contract for available metadata

@@ -50,6 +50,24 @@ Retrieve metadata for this address
 | --- | --- |
 | _address | <code>string</code> | 
 
+**Example**  
+```js
+import Registry from "theregistry";
+import Eth from "ethjs";
+
+const provider = new Eth.HttpProvider(
+  `https://mainnet.infura.io/`,
+);
+
+const registry = new Registry(provider);
+registry
+  .get(ensaddress)
+  .then(r => {
+      console.log(r.data);
+  })
+  .catch(e => console.error(e));
+
+```
 <a name="storeMetadata"></a>
 
 ## storeMetadata(_address, _name, _data, _callback) ⇒ <code>string</code>
