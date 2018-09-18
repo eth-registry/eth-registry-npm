@@ -35,22 +35,6 @@ export default class Metadata {
             });
     }
 
-    /**
-     * Retrieve the current price for submitting data to The Registry
-     * @param {string} unit - Unit to convert the price to (defaults to 'ether')
-     * @returns {number} Current price
-     */
-    async price(unit = "ether") {
-        return this.contract
-            .getPrice()
-            .then(r => {
-                return Eth.fromWei(r[0], unit);
-            })
-            .catch(e => {
-                console.error(e);
-            });
-    }
-
     /** @description Retrieve metadata for this address
      * @param {string} _address
      * @returns {string} Address Metadata object with received metadata or null when no metadata available
@@ -185,5 +169,21 @@ export default class Metadata {
                 resolve(result);
             });
         });
+    }
+
+    /**
+     * Retrieve the current price for submitting data to The Registry
+     * @param {string} unit - Unit to convert the price to (defaults to 'ether')
+     * @returns {number} Current price
+     */
+    async price(unit = "ether") {
+        return this.contract
+            .getPrice()
+            .then(r => {
+                return Eth.fromWei(r[0], unit);
+            })
+            .catch(e => {
+                console.error(e);
+            });
     }
 }

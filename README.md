@@ -1,20 +1,9 @@
-# NPM Module Boilerplate
+# The Registry
 
-[![Build Status](https://travis-ci.org/flexdinesh/npm-module-boilerplate.svg?branch=master)](https://travis-ci.org/flexdinesh/npm-module-boilerplate) [![dependencies Status](https://david-dm.org/flexdinesh/npm-module-boilerplate/status.svg)](https://david-dm.org/flexdinesh/npm-module-boilerplate) [![devDependencies Status](https://david-dm.org/flexdinesh/npm-module-boilerplate/dev-status.svg)](https://david-dm.org/flexdinesh/npm-module-boilerplate?type=dev) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Greenkeeper badge](https://badges.greenkeeper.io/ethtective/cafe.svg)](https://greenkeeper.io/) [![Build Status](https://travis-ci.com/Cygnusfear/theregistry.npm.svg?token=J95RxJssBScLdG1sc76e&branch=master)](https://travis-ci.com/ethtective/cafe) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![Ethereum Dapp Badge](https://img.shields.io/badge/web3-app-00ffd9.svg?longcache=true&logo=Ethereum&logoColor=white&style=flat&logoWidth=12)](http://www.ethereum.org)
 
-**Start developing your NPM module in seconds** ✨
+# Metadata Registry
 
-Readymade boilerplate setup with all the best practices to kick start your npm/node module development.
-
-Happy hacking =)
-
-# Features
-
--   **ES6/ESNext** - Write _ES6_ code and _Babel_ will transpile it to ES5 for backwards compatibility
--   **Test** - _Mocha_ with _Istanbul_ coverage
--   **Lint** - Preconfigured _ESlint_ with _Airbnb_ config
--   **CI** - _TravisCI_ configuration setup
--   **Minify** - Built code will be minified for performance
 
 # Development
 
@@ -33,18 +22,12 @@ Happy hacking =)
 
 Just clone this repo and remove `.git` folder.
 
-# License
-
-MIT © Dinesh Pandiyan
 
 # API
 
 ## Functions
 
 <dl>
-<dt><a href="#price">price(unit)</a> ⇒ <code>number</code></dt>
-<dd><p>Retrieve the current price for submitting data to The Registry</p>
-</dd>
 <dt><a href="#get">get(_address)</a> ⇒ <code>string</code> | <code>string</code></dt>
 <dd><p>Retrieve metadata for this address</p>
 </dd>
@@ -63,19 +46,10 @@ MIT © Dinesh Pandiyan
 <dt><a href="#lookUp">lookUp(IPFS)</a> ⇒ <code>string</code></dt>
 <dd><p>Reads content of a JSON file and stores it on IPFS</p>
 </dd>
+<dt><a href="#price">price(unit)</a> ⇒ <code>number</code></dt>
+<dd><p>Retrieve the current price for submitting data to The Registry</p>
+</dd>
 </dl>
-
-<a name="price"></a>
-
-## price(unit) ⇒ <code>number</code>
-Retrieve the current price for submitting data to The Registry
-
-**Kind**: global function  
-**Returns**: <code>number</code> - Current price  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| unit | <code>string</code> | <code>&quot;ether&quot;</code> | Unit to convert the price to (defaults to 'ether') |
 
 <a name="get"></a>
 
@@ -152,8 +126,20 @@ Reads content of a JSON file and stores it on IPFS
 | --- | --- | --- |
 | IPFS | <code>string</code> | address to look up |
 
+<a name="price"></a>
+
+## price(unit) ⇒ <code>number</code>
+Retrieve the current price for submitting data to The Registry
+
+**Kind**: global function  
+**Returns**: <code>number</code> - Current price  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| unit | <code>string</code> | <code>&quot;ether&quot;</code> | Unit to convert the price to (defaults to 'ether') |
 
 
-* * *
 
-&copy; 2018 - Alexander Mangel
+# License
+
+MIT © Alexander Mangel
