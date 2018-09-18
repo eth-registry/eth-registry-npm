@@ -43,15 +43,12 @@ MIT © Dinesh Pandiyan
 
 <dl>
 <dt><a href="#price">price(unit)</a> ⇒ <code>number</code></dt>
-<dd><p>Retrieve the current price for submission as BN</p>
+<dd><p>Retrieve the current price for submitting data to The Registry</p>
 </dd>
-<dt><a href="#getPriceEth">getPriceEth()</a> ⇒ <code>number</code></dt>
-<dd><p>Retrieve the current price for submission in Eth</p>
-</dd>
-<dt><a href="#get">get(_address)</a> ⇒ <code>metadata</code></dt>
+<dt><a href="#get">get(_address)</a> ⇒ <code>string</code> | <code>string</code></dt>
 <dd><p>Retrieve metadata for this address</p>
 </dd>
-<dt><a href="#storeMetadata">storeMetadata(Address, Name, Metadata, Callback)</a> ⇒ <code>string</code></dt>
+<dt><a href="#storeMetadata">storeMetadata(_address, _name, _data, _callback)</a> ⇒ <code>string</code></dt>
 <dd><p>Stores address metadata on The Registry</p>
 </dd>
 <dt><a href="#storeJsonFileIPFS">storeJsonFileIPFS(Blob)</a> ⇒ <code>string</code></dt>
@@ -71,7 +68,7 @@ MIT © Dinesh Pandiyan
 <a name="price"></a>
 
 ## price(unit) ⇒ <code>number</code>
-Retrieve the current price for submission as BN
+Retrieve the current price for submitting data to The Registry
 
 **Kind**: global function  
 **Returns**: <code>number</code> - Current price  
@@ -80,20 +77,13 @@ Retrieve the current price for submission as BN
 | --- | --- | --- | --- |
 | unit | <code>string</code> | <code>&quot;ether&quot;</code> | Unit to convert the price to (defaults to 'ether') |
 
-<a name="getPriceEth"></a>
-
-## getPriceEth() ⇒ <code>number</code>
-Retrieve the current price for submission in Eth
-
-**Kind**: global function  
-**Returns**: <code>number</code> - Current price in Eth  
 <a name="get"></a>
 
-## get(_address) ⇒ <code>metadata</code>
+## get(_address) ⇒ <code>string</code> \| <code>string</code>
 Retrieve metadata for this address
 
 **Kind**: global function  
-**Returns**: <code>metadata</code> - Metadata object with received metadata or null when no metadata available  
+**Returns**: <code>string</code> - Address Metadata object with received metadata or null when no metadata available<code>string</code> - Name Metadata object with received metadata or null when no metadata available  
 
 | Param | Type |
 | --- | --- |
@@ -101,7 +91,7 @@ Retrieve metadata for this address
 
 <a name="storeMetadata"></a>
 
-## storeMetadata(Address, Name, Metadata, Callback) ⇒ <code>string</code>
+## storeMetadata(_address, _name, _data, _callback) ⇒ <code>string</code>
 Stores address metadata on The Registry
 
 **Kind**: global function  
@@ -109,10 +99,10 @@ Stores address metadata on The Registry
 
 | Param | Type | Description |
 | --- | --- | --- |
-| Address | <code>string</code> | for which you are submitting data |
-| Name | <code>string</code> | of the address |
-| Metadata | <code>string</code> | object |
-| Callback | <code>function</code> | for when the transaction receipt is returned |
+| _address | <code>string</code> | Address for which you are submitting data |
+| _name | <code>string</code> | Name of the address |
+| _data | <code>string</code> | Metadata object |
+| _callback | <code>function</code> | Callback for when the transaction receipt is returned |
 
 <a name="storeJsonFileIPFS"></a>
 
