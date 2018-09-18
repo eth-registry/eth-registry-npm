@@ -39,8 +39,10 @@ MIT © Dinesh Pandiyan
 
 # API
 
+## Functions
+
 <dl>
-<dt><a href="#price">price()</a> ⇒ <code>BN</code></dt>
+<dt><a href="#price">price(unit)</a> ⇒ <code>number</code></dt>
 <dd><p>Retrieve the current price for submission as BN</p>
 </dd>
 <dt><a href="#getPriceEth">getPriceEth()</a> ⇒ <code>number</code></dt>
@@ -68,97 +70,100 @@ MIT © Dinesh Pandiyan
 
 <a name="price"></a>
 
-## price() ⇒ <code>BN</code>
-
+## price(unit) ⇒ <code>number</code>
 Retrieve the current price for submission as BN
 
-**Kind**: global function
-**Returns**: <code>BN</code> - Current price as BN
+**Kind**: global function  
+**Returns**: <code>number</code> - Current price  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| unit | <code>string</code> | <code>&quot;ether&quot;</code> | Unit to convert the price to (defaults to 'ether') |
+
 <a name="getPriceEth"></a>
 
 ## getPriceEth() ⇒ <code>number</code>
-
 Retrieve the current price for submission in Eth
 
-**Kind**: global function
-**Returns**: <code>number</code> - Current price in Eth
+**Kind**: global function  
+**Returns**: <code>number</code> - Current price in Eth  
 <a name="get"></a>
 
-## get(\_address) ⇒ <code>metadata</code>
-
+## get(_address) ⇒ <code>metadata</code>
 Retrieve metadata for this address
 
-**Kind**: global function
-**Returns**: <code>metadata</code> - Metadata object with received metadata or null when no metadata available
+**Kind**: global function  
+**Returns**: <code>metadata</code> - Metadata object with received metadata or null when no metadata available  
 
-| Param     | Type                |
-| --------- | ------------------- |
-| \_address | <code>string</code> |
+| Param | Type |
+| --- | --- |
+| _address | <code>string</code> | 
 
 <a name="storeMetadata"></a>
 
 ## storeMetadata(Address, Name, Metadata, Callback) ⇒ <code>string</code>
-
 Stores address metadata on The Registry
 
-**Kind**: global function
-**Returns**: <code>string</code> - TX Hash of the submitted file
+**Kind**: global function  
+**Returns**: <code>string</code> - TX Hash of the submitted file  
 
-| Param    | Type                  | Description                                  |
-| -------- | --------------------- | -------------------------------------------- |
-| Address  | <code>string</code>   | for which you are submitting data            |
-| Name     | <code>string</code>   | of the address                               |
-| Metadata | <code>string</code>   | object                                       |
+| Param | Type | Description |
+| --- | --- | --- |
+| Address | <code>string</code> | for which you are submitting data |
+| Name | <code>string</code> | of the address |
+| Metadata | <code>string</code> | object |
 | Callback | <code>function</code> | for when the transaction receipt is returned |
 
 <a name="storeJsonFileIPFS"></a>
 
 ## storeJsonFileIPFS(Blob) ⇒ <code>string</code>
-
 Reads content of a JSON file and stores it on IPFS
 
-**Kind**: global function
-**Returns**: <code>string</code> - IPFS Hash of stored file
+**Kind**: global function  
+**Returns**: <code>string</code> - IPFS Hash of stored file  
 
-| Param | Type              | Description            |
-| ----- | ----------------- | ---------------------- |
-| Blob  | <code>blob</code> | accepted by Filereader |
+| Param | Type | Description |
+| --- | --- | --- |
+| Blob | <code>blob</code> | accepted by Filereader |
 
 <a name="storeDataFileIPFS"></a>
 
 ## storeDataFileIPFS(Blob) ⇒ <code>string</code>
-
 Reads content of a Plaintext file and stores it on IPFS
 
-**Kind**: global function
-**Returns**: <code>string</code> - IPFS Hash of stored file
+**Kind**: global function  
+**Returns**: <code>string</code> - IPFS Hash of stored file  
 
-| Param | Type              | Description            |
-| ----- | ----------------- | ---------------------- |
-| Blob  | <code>blob</code> | accepted by Filereader |
+| Param | Type | Description |
+| --- | --- | --- |
+| Blob | <code>blob</code> | accepted by Filereader |
 
 <a name="convertBlobToBase64"></a>
 
 ## convertBlobToBase64(Blob) ⇒ <code>string</code>
-
 Converts an image blob to a base64 string
 
-**Kind**: global function
-**Returns**: <code>string</code> - base64 encoded image file
+**Kind**: global function  
+**Returns**: <code>string</code> - base64 encoded image file  
 
-| Param | Type              | Description            |
-| ----- | ----------------- | ---------------------- |
-| Blob  | <code>blob</code> | accepted by Filereader |
+| Param | Type | Description |
+| --- | --- | --- |
+| Blob | <code>blob</code> | accepted by Filereader |
 
 <a name="lookUp"></a>
 
 ## lookUp(IPFS) ⇒ <code>string</code>
-
 Reads content of a JSON file and stores it on IPFS
 
-**Kind**: global function
-**Returns**: <code>string</code> - JSON contents returned from IPFS
+**Kind**: global function  
+**Returns**: <code>string</code> - JSON contents returned from IPFS  
 
-| Param | Type                | Description        |
-| ----- | ------------------- | ------------------ |
-| IPFS  | <code>string</code> | address to look up |
+| Param | Type | Description |
+| --- | --- | --- |
+| IPFS | <code>string</code> | address to look up |
+
+
+
+* * *
+
+&copy; 2018 - Alexander Mangel

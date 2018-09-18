@@ -15,8 +15,8 @@ const ipfs = new IPFS({
 export default class Metadata {
     /**
      * Initialize The Registry module
-     * @kind function
-     * @param {HttpProvider} Web3 provider
+     * @constructor
+     * @param {HttpProvider} provider - Web3 provider
      */
     constructor(provider) {
         this.provider = provider;
@@ -37,7 +37,8 @@ export default class Metadata {
 
     /**
      * Retrieve the current price for submission as BN
-     * @returns {BN} Current price as BN
+     * @param {string} unit - Unit to convert the price to (defaults to 'ether')
+     * @returns {number} Current price
      */
     async price(unit = "ether") {
         return this.contract
