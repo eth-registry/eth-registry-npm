@@ -13,45 +13,67 @@ const ipfs = new IPFS({
 });
 
 export default class Metadata {
-    /** @description Initialize The Registry module
+    /**
+     * Initialize The Registry module
+     * @kind function
      * @param {HttpProvider} Web3 provider
      */
     constructor(provider) {
         this.provider = provider;
         this.eth = new Eth(provider);
         this.contract = this.eth.contract(abi).at(contractAddress);
-        console.log(this.contract.getPrice());
     }
 
-    async isCurator() {}
+    async isCurator(_address) {
+        return this.contract
+            .isCurator(_address)
+            .then(r => {
+                return r[0];
+            })
+            .catch(e => {
+                console.error;
+            });
+    }
 
-    async getPrice() {
+    /**
+     * Retrieve the current price for submission as BN
+     * @returns {BN} Current price as BN
+     */
+    async price(unit = "ether") {
         return this.contract
             .getPrice()
             .then(r => {
-                console.log(r);
-                return r;
+                return Eth.fromWei(r[0], unit);
             })
             .catch(e => {
                 console.error(e);
             });
     }
 
-    /** @description Initialize The Registry module
+    /** @description Retrieve the current price for submission in Eth
+     * @return {number} Current price in Eth
+     */
+    async getPriceEth() {
+        return this.contract
+            .getPrice()
+            .then(r => {
+                return Eth.fromWei(r[0], "ether");
+            })
+            .catch(e => {
+                console.error(e);
+            });
+    }
+
+    /** @description Retrieve metadata for this address
      * @param {string} _address
      * @return {metadata} Metadata object with received metadata or null when no metadata available
      */
-    async getMetadata(_address) {
+    async get(_address) {
         // Query contract for available metadata
         let query = await this.contract.getByAddress(_address).catch(e => {
             console.error(e);
         });
-        if (
-            !query ||
-            query[0] === "0x0000000000000000000000000000000000000000" ||
-            !query[2]
-        )
-            return null;
+        if (!query || query[0] === "0x" || !query[2]) return null;
 
         // Query IPFS to get JSON
         let ipfs = await this.lookUp(query[2]).catch(e => {
@@ -70,7 +92,7 @@ export default class Metadata {
             data: JSON.parse(JSON.stringify(ipfs)),
             self_attested: query[3],
             curated: query[4],
-            submitter: result[5],
+            submitter: query[5],
         };
     }
 
