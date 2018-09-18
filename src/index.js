@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import Eth from "ethjs";
 import IPFS from "ipfs-mini";
 import spec from "./spec.js";
