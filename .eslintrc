@@ -1,10 +1,22 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb",
+  "root": true,
+  "extends": ["plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "env": {
     "mocha": true
   },
   "rules": {
-    "comma-dangle": ["error", "only-multiline"]
+    "prettier/prettier": ["error",
+      {
+        trailingComma: 'all',
+        tabWidth: 4
+      }]
   }
 }

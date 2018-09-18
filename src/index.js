@@ -1,8 +1,10 @@
 import Eth from "ethjs";
-import abi from "../abi/metadata.json";
 import IPFS from "ipfs-mini";
+import spec from "./spec.js";
+import abi from "./abi/metadata.json";
 
 const contractAddress = "0xfa91455977911e46f48b0c362174f52176ed49b6";
+
 const ipfs = new IPFS({
     host: "ipfs.infura.io",
     port: 5001,
@@ -10,33 +12,51 @@ const ipfs = new IPFS({
 });
 
 export default class Metadata {
-
     /** @description Initialize The Registry module
-    * @param {provider} Web3 provider
-    */
+     * @param {HttpProvider} Web3 provider
+     */
     constructor(provider) {
         this.provider = provider;
-        this.contract = eth.contract(abi).at(contractAddress);
+        this.eth = new Eth(provider);
+        this.contract = this.eth.contract(abi).at(contractAddress);
+        this.index = 0;
+        this.contract
+            .getPrice()
+            .then(r => {
+                this.index = r[0];
+            })
+            .catch(e => {
+                console.error(
+                    "Could not find contract, make sure you are connected to the right network",
+                    e,
+                );
+            });
     }
 
     async isCurator() {}
 
     async getPrice() {}
 
-
     /** @description Initialize The Registry module
-    * @param {string} _address
-    * @return {metadata} Metadata object with received metadata or null when no metadata available
-    */
+     * @param {string} _address
+     * @return {metadata} Metadata object with received metadata or null when no metadata available
+     */
     async getMetadata(_address) {
-
         // Query contract for available metadata
-        let query = await this.contract.getByAddress(_address).catch(e => {console.error(e)});
-        if (!query || query[0] === "0x0000000000000000000000000000000000000000" || !query[2])
+        let query = await this.contract.getByAddress(_address).catch(e => {
+            console.error(e);
+        });
+        if (
+            !query ||
+            query[0] === "0x0000000000000000000000000000000000000000" ||
+            !query[2]
+        )
             return null;
 
         // Query IPFS to get JSON
-        let ipfs = await this.lookUp(query[2]).catch(e => {console.error(e)});
+        let ipfs = await this.lookUp(query[2]).catch(e => {
+            console.error(e);
+        });
         if (!ipfs) return null;
 
         // @todo check if metadata is valid
@@ -47,38 +67,41 @@ export default class Metadata {
         return {
             address: query[0],
             name: query[1],
-            data: JSON.parse(JSON.stringify(ipfs));
+            data: JSON.parse(JSON.stringify(ipfs)),
             self_attested: query[3],
             curated: query[4],
-            submitter: result[5]
-        }
+            submitter: result[5],
+        };
     }
 
     /** @description Stores address metadata on The Registry
-    * @param {string} Address for which you are submitting data
-    * @param {string} Name of the address
-    * @param {string} Metadata object
-    * @param {function} Callback for when the transaction receipt is returned
-    * @return {string} TX Hash of the submitted file
-    */
+     * @param {string} Address for which you are submitting data
+     * @param {string} Name of the address
+     * @param {string} Metadata object
+     * @param {function} Callback for when the transaction receipt is returned
+     * @return {string} TX Hash of the submitted file
+     */
     async storeMetadata(_address, _name, _data, _onReceipt) {
         let ipfsHash = await storeJsonIPFS(_data);
-        if (!ipfsHash)
+        if (!ipfsHash) return;
     }
 
     getEmptyObject() {
-        const newObj = JSON.pase(JSON.stringify(json));
+        const newObj = JSON.pase(JSON.stringify(spec));
         return newObj;
     }
 
-    async storeJsonIPFS(data) {
-
+    isValidAddress(address) {
+        if (address && address.length === 42) return Eth.isAddress(address);
+        return false;
     }
 
+    async storeJsonIPFS(data) {}
+
     /** @description Reads content of a JSON file and stores it on IPFS
-    * @param {blob} Blob accepted by Filereader
-    * @return {string} IPFS Hash of stored file
-    */
+     * @param {blob} Blob accepted by Filereader
+     * @return {string} IPFS Hash of stored file
+     */
     async storeJsonFileIPFS(data) {
         return new Promise((resolve, reject) => {
             reader = new FileReader();
@@ -99,9 +122,9 @@ export default class Metadata {
     }
 
     /** @description Reads content of a Plaintext file and stores it on IPFS
-    * @param {blob} Blob accepted by Filereader
-    * @return {string} IPFS Hash of stored file
-    */
+     * @param {blob} Blob accepted by Filereader
+     * @return {string} IPFS Hash of stored file
+     */
     async storeDataFileIPFS(data) {
         return new Promise((resolve, reject) => {
             reader = new FileReader();
@@ -121,9 +144,9 @@ export default class Metadata {
     }
 
     /** @description Converts an image blob to a base64 string
-    * @param {blob} Blob accepted by Filereader
-    * @return {string} base64 encoded image file
-    */
+     * @param {blob} Blob accepted by Filereader
+     * @return {string} base64 encoded image file
+     */
     async convertBlobToBase64(blob) {
         console.log(blob);
         return new Promise((resolve, reject) => {
@@ -140,11 +163,10 @@ export default class Metadata {
         });
     }
 
-
     /** @description Reads content of a JSON file and stores it on IPFS
-    * @param {string} IPFS address to look up
-    * @return {string} JSON contents returned from IPFS
-    */
+     * @param {string} IPFS address to look up
+     * @return {string} JSON contents returned from IPFS
+     */
     async lookUp(address) {
         if (address);
         return new Promise((resolve, reject) => {
