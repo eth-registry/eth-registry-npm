@@ -1,4 +1,4 @@
-export default (json = {
+const spec = {
     version: "0.2",
     address: "",
     submission: {
@@ -36,4 +36,6 @@ export default (json = {
             related: [],
         },
     },
-});
+};
+
+export default spec;

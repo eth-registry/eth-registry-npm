@@ -1,7 +1,7 @@
 import Eth from "ethjs";
 import IPFS from "ipfs-mini";
 import spec from "./spec.js";
-import abi from "./abi/metadata.json";
+import abi from "../abi/metadata.json";
 
 const contractAddress = "0xfa91455977911e46f48b0c362174f52176ed49b6";
 
