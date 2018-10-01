@@ -4,7 +4,7 @@ import IPFS from "ipfs-mini";
 import spec from "./spec.js";
 import abi from "../abi/metadata.json";
 
-const contractAddress = "0xfa91455977911e46f48b0c362174f52176ed49b6";
+const contractAddress = "0x201be2022c9b58428d6a5743f2bd4cb8934547df";
 
 const ipfs = new IPFS({
     host: "ipfs.infura.io",
