@@ -215,10 +215,3 @@ export default class Metadata {
             });
     }
 }
-
-const m = new Metadata();
-const test = async () => {
-    let res = await m.get("0x42d6622dece394b54999fbd73d108123806f6a18");
-    console.log(res);
-};
-test();
