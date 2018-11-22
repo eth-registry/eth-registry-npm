@@ -2,7 +2,7 @@ import "babel-polyfill";
 import Web3 from "web3";
 import IPFS from "ipfs-mini";
 import spec from "./spec.js";
-import abi from "../abi/metadata.json";
+import abi from "./metadata.js";
 
 const contractAddress = "0x201be2022c9b58428d6a5743f2bd4cb8934547df";
 
@@ -215,3 +215,10 @@ export default class Metadata {
             });
     }
 }
+
+const m = new Metadata();
+const test = async () => {
+    let res = await m.get("0x42d6622dece394b54999fbd73d108123806f6a18");
+    console.log(res);
+};
+test();
