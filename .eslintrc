@@ -13,10 +13,12 @@
     "mocha": true
   },
   "rules": {
-    "prettier/prettier": ["error",
+    "prettier/prettier": [
+      "error",
       {
-        trailingComma: 'all',
-        tabWidth: 4
-      }]
+        "trailingComma": "all",
+        "tabWidth": 4
+      }
+    ]
   }
 }
