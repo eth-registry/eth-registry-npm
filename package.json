@@ -1,7 +1,7 @@
 {
-  "name": "theregistry",
+  "name": "eth-registry",
   "version": "1.0.0",
-  "description": "Npm module for retrieving metadata from The Registry",
+  "description": "Npm module for retrieving metadata from Eth Registry",
   "main": "./lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
@@ -16,7 +16,11 @@
     "build:docs": "npx jsdoc-to-markdown --template README.hbs --files ./src/index.js > README.md",
     "prepublish": "npm run build:docs && npm run clean && npm run lint && npm run test && npm run build"
   },
-  "files": ["lib", "src", "src/abi"],
+  "files": [
+    "lib",
+    "src",
+    "src/abi"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theregistry/theregistry.npm.git"
@@ -61,7 +65,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-minify": "^0.3.0",
-    "ethjs": "^0.4.0",
-    "ipfs-mini": "^1.1.2"
+    "ipfs-mini": "^1.1.2",
+    "web3": "^1.0.0-beta.36"
   }
 }
