@@ -35,7 +35,7 @@ export default class Metadata {
             .isCurator(_address)
             .call()
             .then(r => {
-                return r[0];
+                return r;
             })
             .catch(e => {
                 console.error;
@@ -216,11 +216,29 @@ export default class Metadata {
                 console.error(e);
             });
     }
-}
 
-const m = new Metadata();
-const test = async () => {
-    let p = await m.price();
-    console.log(p);
-};
-test();
+    /**
+     * Retrieve the last 10 submissions to Eth Registry
+     * @returns {string} the last 10 submissions to Eth Registry
+     */
+    async getHistory() {
+        let index = await this.contract.methods.getIndex().call();
+        index = index - 1;
+        this.history = [];
+        const queries = [];
+        for (let i = index; i > index - 10; i--) {
+            queries.push(this.contract.methods.getByIndex(i).call());
+        }
+        let response = await Promise.all(queries);
+
+        for (let r of response) {
+            this.history.push(r);
+        }
+        let unique = [];
+        return this.history.filter((item, index) => {
+            let exists = unique.indexOf(item[0]) === -1;
+            unique.push(item[0]);
+            return exists;
+        });
+    }
+}

@@ -29,23 +29,33 @@ describe("Metadata", () => {
             const spank = await registry.get(
                 "0x42d6622dece394b54999fbd73d108123806f6a18",
             );
+            console.log("Spank returns " + spank);
             assert(spank !== null, "Got spanked :(");
         });
     });
 
     describe("0xa3D22569364Fe6D27E8545bdc2aC62D68004F1Db", () => {
         it("should be a curator", async () => {
-            const spank = await registry.isCurator(
+            const curator = await registry.isCurator(
                 "0xa3D22569364Fe6D27E8545bdc2aC62D68004F1Db",
             );
-            assert(spank !== null, "ain't so");
+            console.log("curator returns " + curator);
+            assert(curator === true, "ain't so");
         });
     });
 
-    describe("getEmptyObject()", () => {
+    describe("getEmptyObject", () => {
         it("should return an object", async () => {
-            const spank = await registry.getEmptyObject();
-            assert(spank !== null, "ain't so");
+            const emptyObject = await registry.getEmptyObject();
+            assert(emptyObject !== null, "ain't so");
+        });
+    });
+
+    describe("getHistory", () => {
+        it("should return an array with items", async () => {
+            const history = await registry.getHistory();
+            console.log("History returns " + history);
+            assert(history !== null, "ain't so");
         });
     });
 });

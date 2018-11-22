@@ -43,6 +43,9 @@ Usage:
 <dt><a href="#price">price(unit)</a> ⇒ <code>number</code></dt>
 <dd><p>Retrieve the current price for submitting data to Eth Registry</p>
 </dd>
+<dt><a href="#getHistory">getHistory()</a> ⇒ <code>string</code></dt>
+<dd><p>Retrieve the last 10 submissions to Eth Registry</p>
+</dd>
 </dl>
 
 <a name="get"></a>
@@ -150,6 +153,13 @@ Retrieve the current price for submitting data to Eth Registry
 | --- | --- | --- | --- |
 | unit | <code>string</code> | <code>&quot;ether&quot;</code> | Unit to convert the price to (defaults to 'ether') |
 
+<a name="getHistory"></a>
+
+## getHistory() ⇒ <code>string</code>
+Retrieve the last 10 submissions to Eth Registry
+
+**Kind**: global function  
+**Returns**: <code>string</code> - the last 10 submissions to Eth Registry  
 
 # Development
 
