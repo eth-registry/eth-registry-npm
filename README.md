@@ -1,8 +1,15 @@
-# The Registry
+# Eth Registry
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/ethtective/cafe.svg)](https://greenkeeper.io/) [![Build Status](https://travis-ci.com/Cygnusfear/theregistry.npm.svg?token=J95RxJssBScLdG1sc76e&branch=master)](https://travis-ci.com/ethtective/cafe) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![Ethereum Dapp Badge](https://img.shields.io/badge/web3-app-00ffd9.svg?longcache=true&logo=Ethereum&logoColor=white&style=flat&logoWidth=12)](http://www.ethereum.org)
+[![Greenkeeper badge](https://badges.greenkeeper.io/ethtective/cafe.svg)](https://greenkeeper.io/) [![Build
+Status](https://travis-ci.com/Cygnusfear/theregistry.npm.svg?token=J95RxJssBScLdG1sc76e&branch=master)](https://travis-ci.com/ethtective/cafe)
+[![code style:
+prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![Ethereum Dapp
+Badge](https://img.shields.io/badge/web3-app-00ffd9.svg?longcache=true&logo=Ethereum&logoColor=white&style=flat&logoWidth=12)](http://www.ethereum.org)
 
-A Node.js module to easily retrieve address metadata from The Registry's Ethereum contract.
+A Node.js module to easily retrieve address metadata from Eth Registry's Ethereum contract.
+
+https://ethregistry.org
 
 # Setup
 
@@ -19,7 +26,7 @@ Usage:
 <dd><p>Retrieve metadata for this address</p>
 </dd>
 <dt><a href="#storeMetadata">storeMetadata(_address, _name, _data, _callback)</a> ⇒ <code>string</code></dt>
-<dd><p>Stores address metadata on The Registry</p>
+<dd><p>Stores address metadata on Eth Registry</p>
 </dd>
 <dt><a href="#storeJsonFileIPFS">storeJsonFileIPFS(Blob)</a> ⇒ <code>string</code></dt>
 <dd><p>Reads content of a JSON file and stores it on IPFS</p>
@@ -34,7 +41,7 @@ Usage:
 <dd><p>Reads content of a JSON file and stores it on IPFS</p>
 </dd>
 <dt><a href="#price">price(unit)</a> ⇒ <code>number</code></dt>
-<dd><p>Retrieve the current price for submitting data to The Registry</p>
+<dd><p>Retrieve the current price for submitting data to Eth Registry</p>
 </dd>
 </dl>
 
@@ -52,10 +59,10 @@ Retrieve metadata for this address
 
 **Example**  
 ```js
-import Registry from "theregistry";
-import Eth from "ethjs";
+import Registry from "eth-registry";
+import Web3 from "web3";
 
-const provider = new Eth.HttpProvider(
+const provider = new Web3.providers.HttpProvider(
   `https://mainnet.infura.io/`,
 );
 
@@ -71,7 +78,7 @@ registry
 <a name="storeMetadata"></a>
 
 ## storeMetadata(_address, _name, _data, _callback) ⇒ <code>string</code>
-Stores address metadata on The Registry
+Stores address metadata on Eth Registry
 
 **Kind**: global function  
 **Returns**: <code>string</code> - TX Hash of the submitted file  
@@ -134,7 +141,7 @@ Reads content of a JSON file and stores it on IPFS
 <a name="price"></a>
 
 ## price(unit) ⇒ <code>number</code>
-Retrieve the current price for submitting data to The Registry
+Retrieve the current price for submitting data to Eth Registry
 
 **Kind**: global function  
 **Returns**: <code>number</code> - Current price  
@@ -146,16 +153,16 @@ Retrieve the current price for submitting data to The Registry
 
 # Development
 
--   `npm run clean` - Remove `lib/` directory
--   `npm test` - Run tests with linting and coverage results.
--   `npm test:only` - Run tests without linting or coverage.
--   `npm test:watch` - You can even re-run tests on file changes!
--   `npm test:prod` - Run tests with minified code.
--   `npm run test:examples` - Test written examples on pure JS for better understanding module usage.
--   `npm run lint` - Run ESlint with airbnb-config
--   `npm run cover` - Get coverage report for your code.
--   `npm run build` - Babel will transpile ES6 => ES5 and minify the code.
--   `npm run prepublish` - Hook for npm. Do all the checks before publishing your module.
+- `npm run clean` - Remove `lib/` directory
+- `npm test` - Run tests with linting and coverage results.
+- `npm test:only` - Run tests without linting or coverage.
+- `npm test:watch` - You can even re-run tests on file changes!
+- `npm test:prod` - Run tests with minified code.
+- `npm run test:examples` - Test written examples on pure JS for better understanding module usage.
+- `npm run lint` - Run ESlint with airbnb-config
+- `npm run cover` - Get coverage report for your code.
+- `npm run build` - Babel will transpile ES6 => ES5 and minify the code.
+- `npm run prepublish` - Hook for npm. Do all the checks before publishing your module.
 
 # License
 
