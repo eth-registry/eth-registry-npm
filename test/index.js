@@ -1,14 +1,12 @@
 import { assert } from "chai";
-import Eth from "ethjs";
+import Web3 from "web3";
 import Registry from "../src";
 
 const network = "mainnet";
-const provider = new Eth.HttpProvider(
+const provider = new Web3.providers.HttpProvider(
     `https://${network}.infura.io/v3/${process.env.INFURA_API}`,
 );
 const registry = new Registry(provider);
-
-// console.log(registry.contract.);
 
 describe("Metadata", () => {
     // describe("Price", () => {
