@@ -1,6 +1,6 @@
 {
     "name": "eth-registry",
-    "version": "1.1.5",
+    "version": "1.1.8",
     "description": "A simple module for retrieving web3 metadata from Eth Registry",
     "main": "./lib/index.js",
     "scripts": {
@@ -16,12 +16,7 @@
         "build:docs": "npx jsdoc-to-markdown --template README.hbs --files ./src/index.js > README.md",
         "prepublish": "npm run build:docs && npm run clean && npm run lint && npm run test && npm run build"
     },
-    "files": [
-        "lib",
-        "src",
-        "src/abi",
-        "abi"
-    ],
+    "files": ["lib", "src", "src/abi", "abi"],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/eth-registry/eth-registry-npm.git"
@@ -41,13 +36,6 @@
     },
     "homepage": "https://ethregistry.org",
     "devDependencies": {
-        "@babel/polyfill": "^7.0.0",
-        "babel-cli": "^6.26.0",
-        "babel-eslint": "^8.2.6",
-        "babel-plugin-add-module-exports": "^0.2.1",
-        "babel-polyfill": "^6.26.0",
-        "babel-preset-env": "^1.6.1",
-        "babel-preset-minify": "^0.3.0",
         "chai": "^4.1.2",
         "cross-env": "^5.1.3",
         "eslint": "^4.19.1",
@@ -57,7 +45,6 @@
         "eslint-plugin-jsx-a11y": "^6.0.2",
         "eslint-plugin-prettier": "^2.6.2",
         "eslint-plugin-react": "^7.4.0",
-        "esm": "^3.0.84",
         "istanbul": "^1.0.0-alpha.2",
         "jsdoc-md": "^1.6.0",
         "jsdoc-to-markdown": "^4.0.1",
@@ -67,6 +54,13 @@
         "rimraf": "^2.6.2"
     },
     "dependencies": {
+        "@babel/polyfill": "^7.0.0",
+        "babel-cli": "^6.26.0",
+        "babel-eslint": "^8.2.6",
+        "babel-plugin-add-module-exports": "^0.2.1",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-minify": "^0.3.0",
         "ipfs-mini": "^1.1.2",
         "web3": "^1.0.0-beta.36"
     }
