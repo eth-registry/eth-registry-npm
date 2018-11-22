@@ -31,8 +31,9 @@ export default class Metadata {
     }
 
     async isCurator(_address) {
-        return this.contract
+        return this.contract.methods
             .isCurator(_address)
+            .call()
             .then(r => {
                 return r[0];
             })
@@ -108,7 +109,7 @@ export default class Metadata {
     }
 
     getEmptyObject() {
-        const newObj = JSON.pase(JSON.stringify(spec));
+        const newObj = JSON.parse(JSON.stringify(spec));
         return newObj;
     }
 
@@ -207,6 +208,7 @@ export default class Metadata {
     async price(unit = "ether") {
         return this.contract.methods
             .getPrice()
+            .call()
             .then(r => {
                 return this.web3.utils.fromWei(r[0], unit);
             })
@@ -215,3 +217,10 @@ export default class Metadata {
             });
     }
 }
+
+const m = new Metadata();
+const test = async () => {
+    let p = await m.price();
+    console.log(p);
+};
+test();
