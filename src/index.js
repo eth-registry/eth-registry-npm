@@ -1,4 +1,4 @@
-import "babel-polyfill";
+import "idempotent-babel-polyfill";
 import Web3 from "web3";
 import IPFS from "ipfs-mini";
 import spec from "./spec.js";
